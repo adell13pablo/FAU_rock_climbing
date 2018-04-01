@@ -1,0 +1,12 @@
+<resources>
+
+    <string name="app_name">FAU_Rock_Climbing</string>
+    <string name="trips">Trips</string>
+    <string name="account">My account</string>
+    <string name="courses">Courses</string>
+    <string name="welcome_message">Welcome to FAU's climbing app</string>
+    <string name="student_mode">Student</string>
+    <string name="guest_mode">Guest</string>
+    <string name="register_mode">Register</string>
+
+</resources>
