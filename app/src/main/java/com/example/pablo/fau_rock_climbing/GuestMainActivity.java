@@ -26,12 +26,12 @@ import java.net.URLConnection;
  * Created by Pablo on 3/26/2018.
  */
 
-public class StudentMainActivity extends AppCompatActivity {
+public class GuestMainActivity extends AppCompatActivity {
     private DrawerLayout mDrawerLayout;
     TextView nav_drawer_name;
     public void onCreate(Bundle savedInstance){
         super.onCreate(savedInstance);
-        setContentView(R.layout.studentmainactivity);
+        setContentView(R.layout.guestmainactivity);
 
         android.support.v7.widget.Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -41,15 +41,15 @@ public class StudentMainActivity extends AppCompatActivity {
         actionbar.setHomeAsUpIndicator(R.drawable.ic_menu_white_24dp);
 
 
-        mDrawerLayout =  findViewById(R.id.student_drawer_layout);
+        mDrawerLayout =  findViewById(R.id.guest_drawer_layout);
 
-        NavigationView student_nav_view =  findViewById(R.id.student_nav_view);
-        View headerView = student_nav_view.getHeaderView(0);
-        nav_drawer_name = headerView.findViewById(R.id.student_nav_drawer_name);
-        Student student = SharedPreferencesManager.getInstance(getApplicationContext()).getStudent();
-        nav_drawer_name.setText(student.getStudentName() + " " + student.getL_name());
+        NavigationView guest_nav_view =  findViewById(R.id.guest_nav_view);
+        View headerView = guest_nav_view.getHeaderView(0);
+        nav_drawer_name = headerView.findViewById(R.id.guest_nav_drawer_name);
+        Guest guest = SharedPreferencesManager.getInstance(getApplicationContext()).getGuest();
+        nav_drawer_name.setText(guest.getGuestName() + " " + guest.getL_name());
 
-        student_nav_view.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+        guest_nav_view.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 //Set item as selected to persist highlight
@@ -62,18 +62,21 @@ public class StudentMainActivity extends AppCompatActivity {
                 //Update UI based on selected option
 
                 switch (item.getItemId()){
-                    case R.id.user_acccount:
-                       // Toast.makeText(getApplicationContext(), "User account", Toast.LENGTH_LONG).show();
-                        startActivity(new Intent(getApplicationContext(), StudentProfile.class));
+                    case R.id.guest_acccount:
+                        // Toast.makeText(getApplicationContext(), "User account", Toast.LENGTH_LONG).show();
+                        startActivity(new Intent(getApplicationContext(), GuestProfile.class));
                         break;
-                    case R.id.user_trips:
+                    case R.id.guest_trips:
                         Toast.makeText(getApplicationContext(), "User trips", Toast.LENGTH_LONG).show();
                         break;
-                    case R.id.user_courses:
+                    case R.id.guest_courses:
+                        Toast.makeText(getApplicationContext(), "User courses", Toast.LENGTH_LONG).show();
+                        break;
+                    case R.id.guest_membership:
                         Toast.makeText(getApplicationContext(), "User courses", Toast.LENGTH_LONG).show();
                         break;
 
-                    case R.id.student_logout:
+                    case R.id.guest_logout:
                         SharedPreferencesManager.getInstance(getApplicationContext()).logOut();
                 }
                 return true;
@@ -94,24 +97,5 @@ public class StudentMainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void calltoDB(){
-        try{
-            URL myurl = new URL("lamp.cse.fau.edu/~padell2017/rock_climbing+phpfile");
-            HttpURLConnection connection = (HttpURLConnection) myurl.openConnection();
-            connection.setRequestMethod("GET");
-            connection.setReadTimeout(10000);
-            connection.setConnectTimeout(10000);
-            connection.connect();
 
-            if(connection.getResponseCode() == 200){
-                //Do something with it
-                //Do something with the info we got from the call to the php file
-            }
-
-        }catch(MalformedURLException exception){
-            Log.i("URL", "URL Exception");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 }

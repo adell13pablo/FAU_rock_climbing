@@ -4,5 +4,6 @@
     <item android:id="@+id/user_acccount" android:title="@string/account" />
     <item android:id="@+id/user_trips" android:title="@string/trips"/>
     <item android:id="@+id/user_courses" android:title="@string/courses"/>
+    <item android:id="@+id/student_logout" android:title="@string/logout"/>
     </group>
 </menu>

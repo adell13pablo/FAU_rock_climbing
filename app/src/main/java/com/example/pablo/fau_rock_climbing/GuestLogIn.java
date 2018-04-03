@@ -20,7 +20,7 @@ import java.util.HashMap;
 /**
  * Created by Pablo on 3/26/2018.
  */
-public class StudentLogIn extends AppCompatActivity {
+public class GuestLogIn extends AppCompatActivity {
     EditText user, password;
     Button login, cancel, register;
     TextView resultTextView;
@@ -29,16 +29,16 @@ public class StudentLogIn extends AppCompatActivity {
 
     public void onCreate(Bundle savedInstance){
         super.onCreate(savedInstance);
-        setContentView(R.layout.student_login);
+        setContentView(R.layout.guest_login);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        user = (EditText) findViewById(R.id.znumber);
-        password = (EditText) findViewById(R.id.student_password);
-        progressBar = findViewById(R.id.student_progressBar);
-        progressBar.setVisibility(View.GONE);
-        login = (Button) findViewById(R.id.login);
-        cancel = (Button) findViewById(R.id.student_cancel);
-        register = findViewById(R.id.student_register);
+        user = (EditText) findViewById(R.id.username);
+        password = (EditText) findViewById(R.id.guest_password);
+        progressBar = findViewById(R.id.guest_progressBar);
+
+        login = (Button) findViewById(R.id.guest_login);
+        cancel = (Button) findViewById(R.id.guest_cancel);
+        register = findViewById(R.id.guest_register);
 
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,14 +50,14 @@ public class StudentLogIn extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                userLogin();
+                guestLogin();
             }
         });
 
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i  = new Intent(getApplicationContext(), RegisterStudent.class);
+                Intent i  = new Intent(getApplicationContext(), GuestRegister.class);
                 startActivity(i);
             }
         });
@@ -65,7 +65,7 @@ public class StudentLogIn extends AppCompatActivity {
 
     //Create Async Task for user verification -- Show loader until task is finished.
 
-    public void userLogin(){
+    public void guestLogin(){
         final String username = user.getText().toString();
         final String pword = password.getText().toString();
 
@@ -75,7 +75,7 @@ public class StudentLogIn extends AppCompatActivity {
 
         //Define inner class to perform the actions, Params are Void because we can access to them as it is an inner class and we got them before
 
-        class UserLogin extends AsyncTask<Void, Void, String>{
+        class User_GuestLogin extends AsyncTask<Void, Void, String>{
 
 
             //So progressBar for as long as the connection with the server goes
@@ -91,7 +91,7 @@ public class StudentLogIn extends AppCompatActivity {
             protected void onPostExecute(String s) {
                 super.onPostExecute(s);
                 progressBar.setVisibility(View.GONE);
-               // Toast.makeText(getApplicationContext(), "Connection Finished", Toast.LENGTH_LONG).show();
+                // Toast.makeText(getApplicationContext(), "Connection Finished", Toast.LENGTH_LONG).show();
 
                 //Do something with the message received
 
@@ -99,24 +99,21 @@ public class StudentLogIn extends AppCompatActivity {
                 try{
 
                     //We receive a JSON object with the messages we have passed on the php script
-                    resultTextView = findViewById(R.id.result_text);
+                    resultTextView = findViewById(R.id.guest_result_text);
 
                     JSONObject obj = new JSONObject(s);
 
                     if(obj.getBoolean("error")){
-                        Toast.makeText(getApplicationContext(), obj.getString("message"), Toast.LENGTH_LONG).show();
+                        resultTextView.setText(obj.getString("message"));
+
                     }else{
                         //Go to next activity
                         //Create student object to store information about user
-                        Student student = new Student(Integer.parseInt(obj.getString("znumber")),
-                                Integer.parseInt(obj.getString("age")),"",
-                                obj.getString("name"),
-                                obj.getString("l_name"),
-                                obj.getString("level") );
-
-                        SharedPreferencesManager.getInstance(getApplicationContext()).studentLogin(student);
-                        finish();
-                        startActivity(new Intent(getApplicationContext(), StudentProfile.class));
+                        Guest guest = new Guest(obj.getString("name"), obj.getString("l_name"), obj.getString("g_id"), obj.getString("membership"),
+                                                obj.getString("level"), obj.getInt("age"));
+                        SharedPreferencesManager.getInstance(getApplicationContext()).guestLogin(guest);
+                        Toast.makeText(getApplicationContext(), "HERE", Toast.LENGTH_LONG).show();
+                        startActivity(new Intent(getApplicationContext(), GuestMainActivity.class));
 
                     }
 
@@ -136,18 +133,18 @@ public class StudentLogIn extends AppCompatActivity {
                 //Create hashmap with pairs key-value
 
                 HashMap<String, String> params = new HashMap<>();
-                params.put("z_number", username);
+                params.put("username", username);
                 params.put("password", pword);
 
                 //Call the URL with the parameters
-                return handler.sendPostRequest(URL.loginStudent, params);
+                return handler.sendPostRequest(URL.loginGuest, params);
 
 
             }
         }
         //Execute the AsyncClass
 
-        UserLogin userLogin = new UserLogin();
-        userLogin.execute();
+        User_GuestLogin guest = new User_GuestLogin();
+        guest.execute();
     }
 }

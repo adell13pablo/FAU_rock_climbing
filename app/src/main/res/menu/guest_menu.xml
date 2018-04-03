@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item android:id="@+id/guest_acccount" android:title="@string/account" />
+        <item android:id="@+id/guest_trips" android:title="@string/trips"/>
+        <item android:id="@+id/guest_courses" android:title="@string/courses"/>
+        <item android:id="@+id/guest_membership" android:title="@string/membership"/>
+        <item android:id="@+id/guest_logout" android:title="@string/logout"/>
+    </group>
+</menu>

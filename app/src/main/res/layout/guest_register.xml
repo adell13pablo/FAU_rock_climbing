@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/student_register"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                android:layout_marginBottom="20dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginBottom="5dp">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/username"
+                    android:textSize="8pt"
+                    android:paddingTop="16dp"
+                    android:paddingBottom="8dp"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:textColor="#000000"/>
+                <EditText
+                    android:layout_width="match_parent"
+                    android:textSize="8pt"
+                    android:paddingBottom="8dp"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:hint="@string/username"
+                    android:id="@+id/username_register"
+                    android:textAppearance="@style/TextAppearance.Design.Hint"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginBottom="5dp">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="16dp"
+                    android:paddingBottom="8dp"
+                    android:text="@string/password"
+                    android:textSize="8pt"
+                    android:textColor="#000000"/>
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPassword"
+                    android:paddingBottom="8dp"
+                    android:textSize="8pt"
+                    android:hint="@string/password"
+                    android:id="@+id/password_guest_register"
+                    android:textAppearance="@style/TextAppearance.Design.Hint"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginBottom="5dp">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="16dp"
+                    android:paddingBottom="8dp"
+                    android:textSize="8pt"
+                    android:text="@string/name"
+                    android:textColor="#000000"/>
+                <EditText
+                    android:layout_width="match_parent"
+                    android:textSize="8pt"
+                    android:paddingBottom="8dp"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/name"
+                    android:inputType="text"
+                    android:id="@+id/name_guest_register"
+                    android:textAppearance="@style/TextAppearance.Design.Hint"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginBottom="5dp">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:paddingTop="16dp"
+                    android:paddingBottom="8dp"
+                    android:textSize="8pt"
+                    android:layout_height="wrap_content"
+                    android:text="@string/l_name"
+                    android:textColor="#000000"/>
+                <EditText
+                    android:layout_width="match_parent"
+                    android:paddingBottom="8dp"
+                    android:textSize="8pt"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/l_name"
+                    android:id="@+id/l_name_guest_register"
+                    android:inputType="text"
+                    android:textAppearance="@style/TextAppearance.Design.Hint"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:paddingTop="16dp"
+                    android:paddingBottom="8dp"
+                    android:textSize="8pt"
+                    android:layout_height="wrap_content"
+                    android:text="@string/age"
+                    android:textColor="#000000"/>
+                <EditText
+                    android:layout_width="match_parent"
+                    android:paddingBottom="8dp"
+                    android:textSize="8pt"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/age"
+                    android:inputType="number"
+                    android:id="@+id/age_guest_register"
+                    android:textAppearance="@style/TextAppearance.Design.Hint"/>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15pt"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="8dp"
+                    android:paddingTop="16dp"
+                    android:text="@string/level"
+                    android:textColor="#000000"
+                    android:textSize="8pt" />
+
+                <Spinner
+                    android:id="@+id/climbing_level_guest"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="8pt" />
+
+            </LinearLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right">
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/next"
+                    android:id="@+id/guest_register_next"
+
+                    android:textColor="#FFFFFF"
+                    android:layout_toRightOf="@+id/register_buttons_tv"
+                    android:background="@color/colorPrimary"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:layout_centerInParent="true"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:id="@+id/register_buttons_tv"/>
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/cancel"
+                    android:layout_toLeftOf="@+id/register_buttons_tv"
+                    android:id="@+id/guest_register_cancel"
+                    android:layout_gravity="right"
+                    android:textColor="#FFFFFF"
+                    android:background="@android:color/holo_red_dark"/>
+
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:id="@+id/register_guest_result"
+                />
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

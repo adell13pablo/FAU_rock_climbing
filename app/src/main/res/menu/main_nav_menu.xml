@@ -5,9 +5,7 @@
             android:title="@string/student_mode">Student</item>
         <item android:id="@+id/guest_mode"
             android:title="@string/guest_mode">Guest</item>
-        <item
-            android:id="@+id/register"
-            android:title="@string/register_mode">Register</item>
+
     </group>
 
 </menu>

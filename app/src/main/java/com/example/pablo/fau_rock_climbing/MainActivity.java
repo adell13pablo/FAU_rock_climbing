@@ -17,13 +17,12 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements MainCardAdapter.ListItemClickListener {
 
     DrawerLayout mainDrawer;
+    Intent i; //Main intent to launch subflows
     RecyclerView recyclerView;
     String[] dataset = {"Test sample 1","Test sample 2", "Test sample 3", "Test sample4", "Test sample 5", "Test sample 6", "Test sample 7", "Test sample 8" };
 
@@ -41,10 +40,15 @@ public class MainActivity extends AppCompatActivity {
         actionbar.setHomeAsUpIndicator(R.drawable.ic_menu_white_24dp);
 
 
+        if(SharedPreferencesManager.getInstance(getApplicationContext()).isLoggedIn()){
+            startActivity(new Intent(getApplicationContext(), StudentMainActivity.class));
+        }
+
+
         //Defining the recycler view
 
         recyclerView = findViewById(R.id.main_recycler_view);
-        MainCardAdapter adapter = new MainCardAdapter(dataset);
+        MainCardAdapter adapter = new MainCardAdapter(dataset, this);
         LinearLayoutManager manager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(manager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -74,19 +78,19 @@ public class MainActivity extends AppCompatActivity {
 
                 switch (item.getItemId()){
                     case R.id.student_mode:
-                        //Toast.makeText(getApplicationContext(), "Student Mode", Toast.LENGTH_LONG).show();
-                       Snackbar snackbar = Snackbar.make(findViewById(R.id.main_relative), "Student Mode", Snackbar.LENGTH_SHORT);
-                        snackbar.setAction("Launch", new launchStudent());
-                        snackbar.show();
-
+                       // Toast.makeText(getApplicationContext(), "Student Mode", Toast.LENGTH_LONG).show();
+                      // Snackbar snackbar = Snackbar.make(findViewById(R.id.main_relative), "Student Mode", Snackbar.LENGTH_SHORT);
+                        //snackbar.setAction("Launch", new launchStudent());
+                        //snackbar.show();
+                       i = new Intent(getApplicationContext(), StudentLogIn.class);
+                        startActivity(i);
 
                         break;
                     case R.id.guest_mode:
-                        Toast.makeText(getApplicationContext(), "Guest Mode", Toast.LENGTH_LONG).show();
+                        i = new Intent(getApplicationContext(), GuestLogIn.class);
+                        startActivity(i);
                         break;
-                    case R.id.register:
-                        Toast.makeText(getApplicationContext(), "Register", Toast.LENGTH_LONG).show();
-                        break;
+
                 }
                 return true;
             }
@@ -121,15 +125,21 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void onListItemClick(int clickedItem) {
+        Toast.makeText(getApplicationContext(), "Click on item" + clickedItem, Toast.LENGTH_LONG).show();
+    }
 
-    //Creating object to link to snackbar action
+
+    //Creating object to link to snackbar action with an interface (not using it anymore)
 
     public class launchStudent implements View.OnClickListener{
 
         @Override
         public void onClick(View view) {
-            Intent i = new Intent(getApplicationContext(), StudentLogIn.class);
-            startActivity(i);
+            Intent j = new Intent(getApplicationContext(), StudentLogIn.class);
+            startActivity(j);
         }
     }
+
 }

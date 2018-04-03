@@ -2,6 +2,13 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.pablo.fau_rock_climbing">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <!-- To auto-complete the email text field in the login form with the user's emails -->
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.READ_PROFILE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -16,12 +23,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".StudentMainActivity"></activity>
-        <activity android:name=".StudentLogIn"/>
+        <activity android:name=".StudentMainActivity" />
+        <activity android:name=".StudentLogIn" />
+        <activity android:name=".RegisterStudent" />
+        <activity
+            android:name=".StudentProfile"
+            android:label="@string/title_activity_student_profile"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity android:name=".GuestLogIn"/>
+        <activity android:name=".GuestMainActivity"/>
+        <activity android:name=".GuestRegister"/>
+        <activity android:name=".GuestProfile"/>
     </application>
-    
-    <uses-permission android:name="android.permission.INTERNET">
-
-    </uses-permission>
 
 </manifest>

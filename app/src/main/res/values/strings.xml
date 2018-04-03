@@ -8,5 +8,38 @@
     <string name="student_mode">Student</string>
     <string name="guest_mode">Guest</string>
     <string name="register_mode">Register</string>
+    <string name="student_register">Student Registration</string>
+    <string name="name">Name</string>
+    <string name="l_name">Last Name</string>
+    <string name="z_number">Z Number</string>
+    <string name="age">Age</string>
+    <string name="password">Password</string>
+    <string name="level">Climbing level</string>
+    <string name="next">Next</string>
+    <string name="cancel">Cancel</string>
+    <string name="logout">Log out</string>
+    <string name="username">Username</string>
+    <string name="membership">Membership</string>
+
+    <string-array name="climbing_level">
+        <item>Beginner</item>
+        <item>Intermediate</item>
+        <item>Advanced</item>
+    </string-array>
+    <string name="title_activity_student_profile">StudentProfile</string>
+    <string name="title_activity_guest_log_in">Sign in</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password (optional)</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+        completions."
+    </string>
 
 </resources>

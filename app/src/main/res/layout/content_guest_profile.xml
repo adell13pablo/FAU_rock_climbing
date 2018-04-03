@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.example.pablo.fau_rock_climbing.StudentProfile"
+    tools:showIn="@layout/guest_profile">
+
+    <ImageView
+        android:layout_width="128dp"
+        android:layout_height="128dp"
+        android:id="@+id/guest_profile_pic"
+
+        android:layout_centerHorizontal="true"
+        android:cropToPadding="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginBottom="10pt"
+        android:src="@drawable/profile_pic"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Name"
+        android:layout_below="@id/guest_profile_pic"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+        android:id="@+id/guest_profile_name_label"/>
+
+    <TextView
+        android:id="@+id/guest_profile_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/guest_profile_l_name"
+        android:layout_below="@+id/guest_profile_name_label"
+        android:layout_alignBottom="@+id/guest_profile_l_name"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:layout_alignStart="@+id/guest_profile_name_label"
+        android:layout_margin="5dp"
+        android:text="Name" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_below="@+id/guest_profile_name_label"
+        android:layout_height="wrap_content"
+        android:id="@+id/guest_profile_l_name"
+        android:layout_toRightOf="@+id/guest_profile_name"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:text="Last Name"
+        android:layout_margin="5dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Age"
+        android:layout_below="@id/guest_profile_name"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+        android:id="@+id/guest_profile_age_label"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:layout_height="wrap_content"
+        android:id="@+id/guest_profile_age"
+        android:layout_below="@+id/guest_profile_age_label"
+
+        android:text="Age"
+        android:layout_margin="5dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Level"
+        android:layout_below="@id/guest_profile_age"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+        android:id="@+id/guest_profile_level_label"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:layout_height="wrap_content"
+        android:id="@+id/guest_profile_level"
+        android:text="Level"
+        android:layout_below="@+id/guest_profile_level_label"
+        android:layout_margin="5dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Username"
+        android:layout_below="@id/guest_profile_level"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+        android:id="@+id/guest_profile_username_label"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/guest_profile_username_label"
+        android:id="@+id/guest_profile_username"
+        android:text="Username"
+        android:layout_below="@+id/guest_profile_username_label"
+        android:layout_margin="5dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Membership"
+        android:layout_below="@id/guest_profile_username"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+        android:id="@+id/guest_profile_membership_label"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/guest_profile_membership_label"
+        android:id="@+id/guest_profile_membership"
+        android:text="Membership"
+        android:layout_below="@+id/guest_profile_membership_label"
+        android:layout_margin="5dp"/>
+
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/guest_profile_logout"
+        android:layout_marginTop="10dp"
+        android:text="LogOut"
+        android:textColor="@color/white"
+        android:layout_below="@+id/guest_profile_membership"
+        android:background="@color/red"/>
+
+
+
+
+
+
+
+
+
+</RelativeLayout>

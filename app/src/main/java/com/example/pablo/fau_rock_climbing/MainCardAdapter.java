@@ -14,7 +14,26 @@ import android.widget.TextView;
 
 public class MainCardAdapter extends RecyclerView.Adapter<MainCardAdapter.ViewHolder> {
 
+    final private ListItemClickListener listener;
     private String [] data;
+
+    //Implementing Item click handler
+
+    public interface ListItemClickListener{
+        void onListItemClick( int clickedItem);
+    }
+
+
+    //Constructor to create the adapter
+    public MainCardAdapter(String[] dataset, ListItemClickListener listItemClickListener){
+
+        data = dataset;
+        listener = listItemClickListener;
+
+
+    }
+
+
 
     @Override
     //Create viewholder to host the views
@@ -36,28 +55,31 @@ public class MainCardAdapter extends RecyclerView.Adapter<MainCardAdapter.ViewHo
     }
 
     @Override
+    //Return array elements so system knows when to stop creating views
     public int getItemCount() {
         return data.length;
     }
+
  //Provide a view holder to get each view info
-    public static class ViewHolder extends RecyclerView.ViewHolder{
+   class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         CardView cardview;
         TextView text;
 
         public ViewHolder(View v){
             super(v);
+            v.setOnClickListener(this);
             text = (TextView) v.findViewById(R.id.card_text);
             cardview = (CardView) v.findViewById(R.id.card_view);
 
         }
-    }
-//Constructor to create the adapter
-    public MainCardAdapter(String[] dataset){
 
-        data = dataset;
-        Log.i("Length", "Length is "+ data.length);
+     @Override
+     public void onClick(View view) {
+         int clickedPosition = getAdapterPosition();
+        listener.onListItemClick(clickedPosition);
 
-    }
+     }
+ }
 
 
 
