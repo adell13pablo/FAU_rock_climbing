@@ -13,15 +13,21 @@ android:gravity="bottom">
         android:layout_width="86dp"
         android:layout_height="86dp"
         android:id="@+id/student_nav_drawer_pic"
-        android:layout_marginBottom="10pt"
+        android:paddingTop="8dp"
         android:src="@drawable/profile_pic"/>
 <TextView
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:textSize="14sp"
-    android:textColor="#DCDCDC"
     android:text="My header title"
+    android:paddingTop="8dp"
     android:id="@+id/student_nav_drawer_name"
     android:textAppearance="@style/TextAppearance.AppCompat.Body1"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="My header title"
+        android:id="@+id/student_nav_drawer_znumber"
+       />
 
 </LinearLayout>

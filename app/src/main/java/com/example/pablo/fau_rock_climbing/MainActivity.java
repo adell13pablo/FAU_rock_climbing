@@ -41,7 +41,16 @@ public class MainActivity extends AppCompatActivity implements MainCardAdapter.L
 
 
         if(SharedPreferencesManager.getInstance(getApplicationContext()).isLoggedIn()){
-            startActivity(new Intent(getApplicationContext(), StudentMainActivity.class));
+            String app_mode = SharedPreferencesManager.getInstance(getApplicationContext()).appMode();
+
+            if(app_mode.equalsIgnoreCase("student")){
+                startActivity(new Intent(getApplicationContext(), StudentMainActivity.class));}
+
+            else if (app_mode.equalsIgnoreCase("guest")){
+
+
+                startActivity(new Intent(getApplicationContext(), GuestMainActivity.class));}
+
         }
 
 

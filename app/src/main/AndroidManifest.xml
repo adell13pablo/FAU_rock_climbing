@@ -30,10 +30,16 @@
             android:name=".StudentProfile"
             android:label="@string/title_activity_student_profile"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity android:name=".GuestLogIn"/>
-        <activity android:name=".GuestMainActivity"/>
-        <activity android:name=".GuestRegister"/>
-        <activity android:name=".GuestProfile"/>
+        <activity android:name=".GuestLogIn" />
+        <activity android:name=".GuestMainActivity" />
+        <activity android:name=".GuestRegister" />
+        <activity android:name=".GuestProfile" />
+        <activity
+            android:name=".MembershipActivity"
+            android:label="@string/title_activity_membership"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity android:name=".TripsMain"/>
+        <activity android:name=".PaymentActivity" />
     </application>
 
 </manifest>

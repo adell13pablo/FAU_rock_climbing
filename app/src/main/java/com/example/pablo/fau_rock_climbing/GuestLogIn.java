@@ -110,9 +110,9 @@ public class GuestLogIn extends AppCompatActivity {
                         //Go to next activity
                         //Create student object to store information about user
                         Guest guest = new Guest(obj.getString("name"), obj.getString("l_name"), obj.getString("g_id"), obj.getString("membership"),
-                                                obj.getString("level"), obj.getInt("age"));
+                                                obj.getString("level"), obj.getInt("age"), obj.getString("e_date"));
                         SharedPreferencesManager.getInstance(getApplicationContext()).guestLogin(guest);
-                        Toast.makeText(getApplicationContext(), "HERE", Toast.LENGTH_LONG).show();
+
                         startActivity(new Intent(getApplicationContext(), GuestMainActivity.class));
 
                     }

@@ -45,4 +45,8 @@ public class Student {
     public String getLevel() {
         return level;
     }
+
+    public void setLevel(String string){
+        this.level = level;
+    }
 }
