@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -31,6 +32,7 @@ public class SharedPreferencesManager {
     private final String KEY_USERNAME = "keyusername";
     private final String KEY_MEMBERSHIP = "keymembership";
     private final String KEY_DATE = "keydate";
+    private final String KEY_PASSWORD = "keypassword";
 
     private static SharedPreferencesManager manager;
     private static Context context;
@@ -60,6 +62,7 @@ public class SharedPreferencesManager {
         editor.putInt(KEY_AGE, student.getAge());
         editor.putString(KEY_LEVEL, student.getLevel());
         editor.putInt(KEY_ZNUMBER, student.getZ_number());
+        editor.putString(KEY_PASSWORD, student.getPassword());
 
         editor.apply();
     }
@@ -77,6 +80,7 @@ public class SharedPreferencesManager {
         editor.putInt(KEY_AGE, guest.getAge());
         editor.putString(KEY_MEMBERSHIP, guest.getMembership());
         editor.putString(KEY_DATE, guest.getE_date());
+        editor.putString(KEY_PASSWORD, guest.getPassword());
         editor.apply();
 
     }
@@ -92,7 +96,8 @@ public class SharedPreferencesManager {
 
     public Student getStudent(){
         SharedPreferences data = context.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
-        return new Student(data.getInt(KEY_ZNUMBER, 0), data.getInt(KEY_AGE, 0)," ", data.getString(KEY_NAME, null), data.getString(KEY_L_NAME,null)
+        return new Student(data.getInt(KEY_ZNUMBER, 0), data.getInt(KEY_AGE, 0),data.getString(KEY_PASSWORD, null),
+                data.getString(KEY_NAME, null), data.getString(KEY_L_NAME,null)
             ,  data.getString(KEY_LEVEL, null));
 }
 
@@ -103,7 +108,8 @@ public class SharedPreferencesManager {
                           data.getString(KEY_USERNAME, null),
                          data.getString(KEY_MEMBERSHIP,null ),
                             data.getString(KEY_LEVEL, null),
-                data.getInt(KEY_AGE, 0), data.getString(KEY_DATE, null));
+                data.getInt(KEY_AGE, 0), data.getString(KEY_DATE, null),
+                data.getString(KEY_PASSWORD, null));
     }
 
     public String appMode(){
@@ -150,8 +156,10 @@ public class SharedPreferencesManager {
 
                 guest =  SharedPreferencesManager.getInstance(context).getGuest();
                 String username = guest.getUsername();
+                String password = guest.getPassword();
                 HashMap<String, String> params = new HashMap<>();
                 params.put("username", username);
+                params.put("password", password);
 
                 return   handler.sendPostRequest(URL.loginGuest, params);
 
@@ -170,7 +178,7 @@ public class SharedPreferencesManager {
                         //Go to next activity
                         //Create student object to store information about user
                         Guest guest_2 = new Guest(obj.getString("name"), obj.getString("l_name"), obj.getString("g_id"), obj.getString("membership"),
-                                obj.getString("level"), obj.getInt("age"), obj.getString("e_date"));
+                                obj.getString("level"), obj.getInt("age"), obj.getString("e_date"), obj.getString("password"));
                         if(guest.getMembership() != guest_2.getMembership()) guest.setMembership(guest_2.getMembership());
                         if(guest.getLevel() != guest_2.getLevel()) guest.setLevel(guest_2.getLevel());
                         if(guest.getE_date() != guest_2.getE_date()) guest.setE_date(guest_2.getE_date());
@@ -179,6 +187,8 @@ public class SharedPreferencesManager {
                     }
 
                 }catch(JSONException e){
+                    Log.d("POST_ERROR", s);
+
                     e.printStackTrace();
                 }
             }
@@ -198,6 +208,7 @@ public class SharedPreferencesManager {
                 String username = String.valueOf(student.getZ_number());
                 HashMap<String, String> params = new HashMap<>();
                 params.put("z_number", username);
+                params.put("password", student.getPassword());
 
                 return   handler.sendPostRequest(URL.loginStudent, params);
 

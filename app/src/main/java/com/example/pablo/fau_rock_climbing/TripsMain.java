@@ -11,7 +11,8 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
         import android.support.v4.widget.DrawerLayout;
         import android.support.v7.app.ActionBar;
-import android.view.MenuItem;
+        import android.support.v7.app.AppCompatActivity;
+        import android.view.MenuItem;
 import android.view.View;
         import android.widget.TextView;
         import android.widget.Toast;
@@ -21,7 +22,7 @@ import android.widget.Toolbar;
  * Created by Pablo on 4/4/2018.
  */
 
-public class TripsMain extends FragmentActivity {
+public class TripsMain extends AppCompatActivity {
 
     ViewPager pager;
     private DrawerLayout mDrawerLayout;
@@ -31,21 +32,12 @@ public class TripsMain extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.trip_main);
 
-
-
-        pager = findViewById(R.id.pager_trips);
-        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager(), this); //Created adapter to fit the viewpager
-
-
-        //Add the fragments to the pager
-        adapter.addFragment(new FragmentTrips(), "Trips");
-        adapter.addFragment(new FragmentMyTrips(),"My Trips");
-
-        pager.setAdapter(adapter);
-
-        TabLayout tabs = findViewById(R.id.tabs_mytrips);
-        tabs.setupWithViewPager(pager);
-
+        android.support.v7.widget.Toolbar toolbar = findViewById(R.id.mytrips_toolbar);
+        setSupportActionBar(toolbar);
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setDisplayShowTitleEnabled(false);
+        actionBar.setHomeAsUpIndicator(R.drawable.ic_menu_white_24dp);
 
 
         mDrawerLayout =  findViewById(R.id.mytrips_drawer_layout);
@@ -91,6 +83,21 @@ public class TripsMain extends FragmentActivity {
                 return true;
             }
         });
+
+
+        pager = findViewById(R.id.pager_trips);
+        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager(), this); //Created adapter to fit the viewpager
+
+
+        //Add the fragments to the pager
+        adapter.addFragment(new FragmentMyTrips(),"My Trips");
+        adapter.addFragment(new FragmentTrips(), "Trips");
+
+
+        pager.setAdapter(adapter);
+
+        TabLayout tabs = findViewById(R.id.tabs_mytrips);
+        tabs.setupWithViewPager(pager);
 
 
 

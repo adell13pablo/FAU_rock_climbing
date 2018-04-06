@@ -6,16 +6,17 @@ package com.example.pablo.fau_rock_climbing;
 
 public class Guest {
 
-    private String name, l_name, username, membership, level, e_date;
+    private String name, l_name, username, membership, level, e_date, password;
     private int age;
 
 
-    public Guest(String name, String l_name, String username, String membership, String level, int age, String e_date){
+    public Guest(String name, String l_name, String username, String membership, String level, int age, String e_date, String password){
         this.name = name;
         this.l_name = l_name;
         this.username = username;
         this.membership = membership;
         this.level = level;
+        this.password = password;
         this.age = age;
         this.e_date = e_date;
     }
@@ -64,4 +65,11 @@ public class Guest {
         e_date = date;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 }

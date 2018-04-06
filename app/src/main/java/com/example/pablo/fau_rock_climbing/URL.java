@@ -15,4 +15,5 @@ public class URL {
     public static final String loginGuest = baseURL + "prueba_API_guest_login.php?";
     public static final String makePayment = baseURL + "make_payment_API.php?";
     public static final String getMyTrips = baseURL + "getMytrips.php?";
+    public static final String getTrips = baseURL + "getTrips.php?";
 }

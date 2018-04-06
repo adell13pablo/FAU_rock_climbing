@@ -78,6 +78,39 @@ public class HttpRequestHandler {
         return sb.toString(); //Return the server's response
     }
 
+    public String sendGetRequest(String requestURL){
+
+        URL url;
+        StringBuilder sb = new StringBuilder();
+        try{
+             url = new URL(requestURL);
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setConnectTimeout(15000);
+            conn.setReadTimeout(15000);
+            conn.setRequestMethod("GET");
+            conn.setDoOutput(true);
+
+
+            int responseCode = conn.getResponseCode();
+
+            if (responseCode == HttpsURLConnection.HTTP_OK) { //if the connection was successful, read the result
+
+                BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream())); //Create a BufferReader to read all the information
+                //Coming from the InputStream (As it happened with OutputStream and the BufferWriter)
+                sb = new StringBuilder(); //Intialize String builder to get the response
+                String response;
+
+                while ((response = br.readLine()) != null) { //When BufferWriter pointer goes to null, no more line are to read so we stop loading lines on the string variable and appending it to the StringBuilder
+
+                    sb.append(response);
+                }
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return sb.toString();
+    }
+
 
     //this method is converting key-value pairs data into a query string as needed to send to the server
     private String getPostDataString(HashMap<String, String> params) throws UnsupportedEncodingException {

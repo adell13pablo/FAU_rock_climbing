@@ -2,20 +2,17 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="My trips"
-        android:textAppearance="@style/TextAppearance.AppCompat.Title"
-        android:id="@+id/text_trips"/>
+    android:layout_height="match_parent"
+    android:paddingTop="20dp">
+
 
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
-        android:layout_below="@id/text_trips"
+
         android:paddingTop="8dp"
-        android:visibility="gone"
-        android:layout_height="wrap_content" android:id="@+id/mytrips_RV">
+
+        android:layout_height="wrap_content"
+        android:id="@+id/mytrips_RV">
 
     </android.support.v7.widget.RecyclerView>
 

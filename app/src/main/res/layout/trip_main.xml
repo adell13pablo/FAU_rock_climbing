@@ -5,6 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true">
+
+    <LinearLayout
+        android:id="@+id/content_frame"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
     <android.support.v7.widget.Toolbar
         android:id="@+id/mytrips_toolbar"
         android:layout_width="match_parent"
@@ -32,6 +38,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/white"/>
+
+    </LinearLayout>
 
     <!-- Container for contents of drawer - use NavigationView to make configuration easier -->
     <android.support.design.widget.NavigationView
