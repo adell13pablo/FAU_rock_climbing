@@ -15,5 +15,10 @@ public class URL {
     public static final String loginGuest = baseURL + "prueba_API_guest_login.php?";
     public static final String makePayment = baseURL + "make_payment_API.php?";
     public static final String getMyTrips = baseURL + "getMytrips.php?";
+    public static final String getMyTrips_Student = baseURL + "getMyTrips_Student.php?";
     public static final String getTrips = baseURL + "getTrips.php?";
+    public static final String getCourses = baseURL + "getCourses.php?";
+    public static final String getMyCourses = baseURL + "getMyCourses.php?";
+    public static final String getMyCourses_Student = baseURL + "getMyCourses_Student.php?";
+    public static final String paymentCourses = baseURL + "payment_Course.php?";
 }

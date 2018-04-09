@@ -1,38 +1,37 @@
 package com.example.pablo.fau_rock_climbing;
 
-        import android.content.Intent;
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
-        import android.support.v4.widget.DrawerLayout;
-        import android.support.v7.app.ActionBar;
-        import android.support.v7.app.AppCompatActivity;
-        import android.view.MenuItem;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
-        import android.widget.TextView;
-        import android.widget.Toast;
-import android.widget.Toolbar;
+import android.widget.TextView;
 
-/**
- * Created by Pablo on 4/4/2018.
- */
-
-public class TripsMain extends AppCompatActivity {
-
+public class CoursesMain extends AppCompatActivity implements CoursesAdapter.ListenerItem{
+    DrawerLayout drawerLayout;
+    NavigationView nav_view;
     ViewPager pager;
-    private DrawerLayout mDrawerLayout;
+    TabLayout tab;
     TextView nav_drawer_name, username;
+    CoursesFragment fragment_courses = new CoursesFragment();
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.trip_main);
+        setContentView(R.layout.courses_main);
 
-        android.support.v7.widget.Toolbar toolbar = findViewById(R.id.mytrips_toolbar);
+        Toolbar toolbar = findViewById(R.id.courses_toolbar);
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
@@ -40,9 +39,10 @@ public class TripsMain extends AppCompatActivity {
         actionBar.setHomeAsUpIndicator(R.drawable.ic_menu_white_24px);
 
 
-        mDrawerLayout =  findViewById(R.id.mytrips_drawer_layout);
 
-        final NavigationView nav_view =  findViewById(R.id.guest_nav_view);
+
+         drawerLayout = findViewById(R.id.course_drawer_layout);
+        nav_view = (NavigationView) findViewById(R.id.courses_nav_view);
         View headerView = nav_view.getHeaderView(0);
         nav_drawer_name = headerView.findViewById(R.id.guest_nav_drawer_name);
         username = headerView.findViewById(R.id.guest_nav_drawer_username);
@@ -72,7 +72,7 @@ public class TripsMain extends AppCompatActivity {
 
                 //Close drawer when item clicked
 
-                mDrawerLayout.closeDrawers();
+                drawerLayout.closeDrawers();
 
                 //Update UI based on selected option
 
@@ -104,7 +104,7 @@ public class TripsMain extends AppCompatActivity {
                     switch (item.getItemId()) {
                         case R.id.user_acccount:
                             // Toast.makeText(getApplicationContext(), "User account", Toast.LENGTH_LONG).show();
-                            startActivity(new Intent(getApplicationContext(), GuestProfile.class));
+                            startActivity(new Intent(getApplicationContext(), StudentProfile.class));
                             break;
                         case R.id.user_trips:
                             startActivity(new Intent(getApplicationContext(), TripsMain.class));
@@ -121,23 +121,18 @@ public class TripsMain extends AppCompatActivity {
             }
         });
 
+        pager = findViewById(R.id.pager_courses);
+        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager(), this);
+        //Add fragments
 
-        pager = findViewById(R.id.pager_trips);
-        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager(), this); //Created adapter to fit the viewpager
-
-
-        //Add the fragments to the pager
-        adapter.addFragment(new FragmentMyTrips(),"My Trips");
-        adapter.addFragment(new FragmentTrips(), "Trips");
+        adapter.addFragment(new MyCoursesFragment(), "My Courses");
+        adapter.addFragment(fragment_courses, "Courses");
 
 
         pager.setAdapter(adapter);
 
-        TabLayout tabs = findViewById(R.id.tabs_mytrips);
-        tabs.setupWithViewPager(pager);
-
-
-
+        tab = findViewById(R.id.tabs_courses);
+        tab.setupWithViewPager(pager);
 
 
     }
@@ -145,13 +140,16 @@ public class TripsMain extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item){
         switch (item.getItemId()){
             case android.R.id.home:
-                mDrawerLayout.openDrawer(GravityCompat.START);
-                Toast.makeText(getApplicationContext(), "Clicked drawable", Toast.LENGTH_LONG);
+                drawerLayout.openDrawer(GravityCompat.START);
+
                 return true;
         }
         return super.onOptionsItemSelected(item);
     }
 
-
-
+    @Override
+    public void onItemClicked(View view, int position) {
+        Log.d("INTERFACE", "onItemClicked: HERE");
+        fragment_courses.onItemClicked(view, position);
+    }
 }

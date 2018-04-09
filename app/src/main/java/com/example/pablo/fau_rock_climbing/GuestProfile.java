@@ -55,7 +55,7 @@ public class GuestProfile extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 SharedPreferencesManager.getInstance(getApplicationContext()).logOut();
-                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+
             }
         });
 

@@ -45,7 +45,7 @@ public class StudentMainActivity extends AppCompatActivity {
         ActionBar actionbar = getSupportActionBar();
         actionbar.setDisplayHomeAsUpEnabled(true);
         actionbar.setDisplayShowTitleEnabled(false);
-        actionbar.setHomeAsUpIndicator(R.drawable.ic_menu_white_24dp);
+        actionbar.setHomeAsUpIndicator(R.drawable.ic_menu_white_24px);
 
 
         mDrawerLayout =  findViewById(R.id.student_drawer_layout);
@@ -76,10 +76,10 @@ public class StudentMainActivity extends AppCompatActivity {
                         startActivity(new Intent(getApplicationContext(), StudentProfile.class));
                         break;
                     case R.id.user_trips:
-                        Toast.makeText(getApplicationContext(), "User trips", Toast.LENGTH_LONG).show();
+                       startActivity(new Intent(getApplicationContext(), TripsMain.class));
                         break;
                     case R.id.user_courses:
-                        Toast.makeText(getApplicationContext(), "User courses", Toast.LENGTH_LONG).show();
+                        startActivity(new Intent(getApplicationContext(), CoursesMain.class));
                         break;
 
                     case R.id.student_logout:

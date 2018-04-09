@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView android:layout_width="match_parent" android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+android:padding="8dp"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".CoursesFragment">
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="16dp"
+    >
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingTop="8dp">
+        <!-- TODO: Update blank fragment layout -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Course Name"
+            android:id="@+id/course_name"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Title"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Course Level"
+            android:id="@+id/course_level"
+            />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/course_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_alignParentEnd="true"
+        android:padding="5dp"
+        android:text="$40"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Title"
+        android:textSize="15pt" />
+
+</RelativeLayout>
+</android.support.v7.widget.CardView>

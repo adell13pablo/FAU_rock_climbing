@@ -46,7 +46,7 @@ public class GuestMainActivity extends AppCompatActivity {
         ActionBar actionbar = getSupportActionBar();
         actionbar.setDisplayHomeAsUpEnabled(true);
         actionbar.setDisplayShowTitleEnabled(false);
-        actionbar.setHomeAsUpIndicator(R.drawable.ic_menu_white_24dp);
+        actionbar.setHomeAsUpIndicator(R.drawable.ic_menu_white_24px);
 
 
         mDrawerLayout =  findViewById(R.id.guest_drawer_layout);
@@ -80,7 +80,7 @@ public class GuestMainActivity extends AppCompatActivity {
                         startActivity(new Intent(getApplicationContext(), TripsMain.class));
                         break;
                     case R.id.guest_courses:
-                        Toast.makeText(getApplicationContext(), "Guest courses", Toast.LENGTH_LONG).show();
+                       startActivity(new Intent(getApplicationContext(), CoursesMain.class));
                         break;
                     case R.id.guest_membership:
                         startActivity(new Intent(getApplicationContext(), MembershipActivity.class));

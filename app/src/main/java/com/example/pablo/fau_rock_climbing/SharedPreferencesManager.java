@@ -129,7 +129,9 @@ public class SharedPreferencesManager {
 
         editor.clear();
         editor.apply();
-        context.startActivity(new Intent(context, MainActivity.class));
+        Intent i = new Intent(context, MainActivity.class);
+        i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        context.startActivity(i);
     }
 
     public void updateUser(){
@@ -186,10 +188,12 @@ public class SharedPreferencesManager {
 
                     }
 
+                    Log.d("POST_UPDATE_GUEST", s);
+
                 }catch(JSONException e){
                     Log.d("POST_ERROR", s);
 
-                    e.printStackTrace();
+
                 }
             }
         }

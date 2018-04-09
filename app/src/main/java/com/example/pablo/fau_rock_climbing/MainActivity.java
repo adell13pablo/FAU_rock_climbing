@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity implements MainCardAdapter.L
         ActionBar actionbar = getSupportActionBar();
         actionbar.setDisplayHomeAsUpEnabled(true);
         actionbar.setDisplayShowTitleEnabled(false);
-        actionbar.setHomeAsUpIndicator(R.drawable.ic_menu_white_24dp);
+        actionbar.setHomeAsUpIndicator(R.drawable.ic_menu_white_24px);
 
 
         if(SharedPreferencesManager.getInstance(getApplicationContext()).isLoggedIn()){

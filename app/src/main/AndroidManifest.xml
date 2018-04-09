@@ -34,12 +34,11 @@
         <activity android:name=".GuestMainActivity" />
         <activity android:name=".GuestRegister" />
         <activity android:name=".GuestProfile" />
-        <activity
-            android:name=".MembershipActivity"
-            android:label="@string/title_activity_membership"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity android:name=".TripsMain"/>
+        <activity android:name=".CoursesMain" />
+        <activity android:name=".MembershipActivity"/>
+        <activity android:name=".TripsMain" />
         <activity android:name=".PaymentActivity" />
+        <activity android:name=".CoursePayment"></activity>
     </application>
 
 </manifest>

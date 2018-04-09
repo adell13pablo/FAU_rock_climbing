@@ -27,7 +27,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
+        android:background="@color/colorPrimary"
         android:layout_margin="@dimen/fab_margin"
-        app:srcCompat="@android:drawable/btn_star" />
+        app:srcCompat="@drawable/ic_home_white_24px" />
 
 </android.support.design.widget.CoordinatorLayout>

@@ -78,7 +78,7 @@ public class FragmentMyTrips extends Fragment implements MyTrips_Adapter.ListIte
     public void getMyTrips(final String username){
 
 
-        class Mytrips extends AsyncTask<String, Void, String>{
+        class Mytrips extends AsyncTask<Void, Void, String>{
 
             protected ArrayList<Trip> trips = new ArrayList<>();
 
@@ -122,18 +122,25 @@ public class FragmentMyTrips extends Fragment implements MyTrips_Adapter.ListIte
             }
 
             @Override
-            protected String doInBackground(String... strings) {
+            protected String doInBackground(Void... voids) {
+                String result = "";
                 HttpRequestHandler handler  = new HttpRequestHandler();
                 HashMap<String, String> data = new HashMap<>();
-                data.put("username", strings[0]);
+                if(SharedPreferencesManager.getInstance(getContext()).appMode().equals("guest")) {
+                    data.put("username", SharedPreferencesManager.getInstance(getContext()).getGuest().getUsername());
+                    result = handler.sendPostRequest(URL.getMyTrips, data);
+                }
+                else if(SharedPreferencesManager.getInstance(getContext()).appMode().equals("student")){
+                    data.put("username", String.valueOf(SharedPreferencesManager.getInstance(getContext()).getStudent().getZ_number()));
+                    result = handler.sendPostRequest(URL.getMyTrips_Student, data);
+                }
 
-
-                return handler.sendPostRequest(URL.getMyTrips, data);
+                return result;
             }
         }
 
         Mytrips mt = new Mytrips();
-        mt.execute(username);
+        mt.execute();
 
 
 

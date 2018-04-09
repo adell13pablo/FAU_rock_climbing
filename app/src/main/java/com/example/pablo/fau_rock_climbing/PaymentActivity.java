@@ -5,6 +5,7 @@ import android.os.AsyncTask;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -16,7 +17,8 @@ import java.util.HashMap;
 
 public class PaymentActivity extends AppCompatActivity {
         TextInputEditText card, account, cvc, exp;
-
+         String course = "";
+         String mode = "";
         Button accept;
 
     @Override
@@ -26,6 +28,13 @@ public class PaymentActivity extends AppCompatActivity {
 
         Intent i = getIntent();
         final String payment_mode = i.getStringExtra("payment");
+        if(i.hasExtra("course")){
+            if(i.hasExtra("mode")) {
+
+                course = i.getStringExtra("course");
+                mode = i.getStringExtra("mode");
+            }
+        }
 
         card = findViewById(R.id.card_number);
 
@@ -38,13 +47,13 @@ public class PaymentActivity extends AppCompatActivity {
         accept.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                makePayment(payment_mode);
+                makePayment(payment_mode, course);
             }
         });
     }
 
 
-    private void makePayment(String mode){
+    private void makePayment(final String mode, final String course){
 
 
 
@@ -61,16 +70,24 @@ Guest guest = SharedPreferencesManager.getInstance(getApplicationContext()).getG
 
                 try{
                     JSONObject object = new JSONObject(s);
+                    Intent intent = null;
                     if(!object.getBoolean("error")){
+                        if(SharedPreferencesManager.getInstance(getApplicationContext()).appMode().equals("guest")){
+                             intent = new Intent(getApplicationContext(), GuestMainActivity.class);
+                        }
+                        else if(SharedPreferencesManager.getInstance(getApplicationContext()).appMode().equals("student")){
+                            intent = new Intent(getApplicationContext(), StudentMainActivity.class);
+                        }
 
-                        Intent intent = new Intent(getApplicationContext(), GuestMainActivity.class);
                         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(intent);
                     }else{
                         Toast.makeText(getApplicationContext(), "An error has ocurred, please check your data", Toast.LENGTH_LONG).show();
                     }
                 }catch(JSONException e){
+                    Log.d("PAYMENT ERROR ", "onPostExecute: PAYMENT ERROR" + s);
                     e.printStackTrace();
+
                 }
             }
 
@@ -78,11 +95,30 @@ Guest guest = SharedPreferencesManager.getInstance(getApplicationContext()).getG
             protected String doInBackground(String... strings) {
 
                 HttpRequestHandler handler = new HttpRequestHandler();
-
+                String url = "";
+                Log.d("MODE", "doInBackground: MODE " + strings[0]);
                 HashMap<String, String> parameters = new HashMap<>();
-                parameters.put("username", guest.getUsername());
-                parameters.put("payment", strings[0]);
-                return handler.sendPostRequest(URL.makePayment, parameters);
+                if(strings[0].equals("course")){
+                    if(SharedPreferencesManager.getInstance(getApplicationContext()).appMode().equals("guest")){
+                        parameters.put("username", guest.getUsername());
+                    }
+                    else if(SharedPreferencesManager.getInstance(getApplicationContext()).appMode().equals("student")){
+                        parameters.put("username", String.valueOf(SharedPreferencesManager.getInstance(getApplicationContext()).getStudent().getZ_number()));
+                    }
+
+
+                    parameters.put("course", course);
+                    parameters.put("mode", mode);
+                    parameters.put("payment", strings[0]);
+                    url = URL.paymentCourses;
+                    Log.d("SET", "doInBackground: COURSE SET");
+
+                }else if(strings[0].equals("monthly") || strings[0].equals("daily")) {
+                    parameters.put("username", guest.getUsername());
+                    parameters.put("payment", strings[0]);
+                    url = URL.makePayment;
+                }
+                return handler.sendPostRequest(url, parameters);
             }
         }
 
