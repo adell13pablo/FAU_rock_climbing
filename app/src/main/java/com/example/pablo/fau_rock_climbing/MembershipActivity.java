@@ -34,7 +34,7 @@ public class MembershipActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_membership);
 
-        Toolbar toolbar = findViewById(R.id.courses_toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar_membership);
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
@@ -44,8 +44,8 @@ public class MembershipActivity extends AppCompatActivity
 
 
 
-        drawerLayout = findViewById(R.id.course_drawer_layout);
-        nav_view = (NavigationView) findViewById(R.id.courses_nav_view);
+        drawerLayout = findViewById(R.id.drawer_layout);
+        nav_view = (NavigationView) findViewById(R.id.nav_view_membership);
         View headerView = nav_view.getHeaderView(0);
         nav_drawer_name = headerView.findViewById(R.id.guest_nav_drawer_name);
         username = headerView.findViewById(R.id.guest_nav_drawer_username);

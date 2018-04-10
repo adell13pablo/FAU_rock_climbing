@@ -21,7 +21,7 @@ import java.util.ArrayList;
  * Created by Pablo on 4/4/2018.
  */
 
-public class FragmentTrips extends Fragment {
+public class FragmentTrips extends Fragment implements TripsAdapter.ListItemOnClickListener {
 
     protected ArrayList<Trip> mytrips ;
     protected RecyclerView list;
@@ -79,14 +79,15 @@ public class FragmentTrips extends Fragment {
                     for(int i= 0; i<size; i++){
                         JSONObject obj_2 = obj.getJSONObject("Trip " + i);
                         Trip trip = new Trip(obj_2.getString("name"), obj_2.getString("s_date"), obj_2.getString("e_date"),
-                                obj_2.getInt("id"));
+                                obj_2.getInt("id"), obj_2.getString("gear"));
                         tp.add(trip);
                     }
                     mytrips = tp;
                     adapter.updatedTrips(tp);
                 }catch (JSONException e){
-                    Log.e("JSON", e.getMessage());
                     Log.d("POST_ERROR",s );
+                    Log.e("JSON", e.getMessage());
+
                     bar.setVisibility(View.GONE);
                 }
 
@@ -106,4 +107,10 @@ public class FragmentTrips extends Fragment {
         mt.execute();
     }
 
+
+
+    @Override
+    public void onListItemClick(View view, int position) {
+        Log.d("CLICKED ON TRIPS", "onListItemClick: CLICKED ON TRIPS");
+    }
 }

@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TripConfirmation">
+
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/confirmation_trips_toolbar"
+        android:minHeight="?attr/actionBarSize"
+        android:background="@color/colorPrimary"></android.support.v7.widget.Toolbar>
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp"
+        android:layout_below="@+id/confirmation_trips_toolbar">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:id="@+id/iv_trip"
+        android:src="@drawable/coral"
+        android:scaleType="fitXY"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="TITLE"
+            android:textAppearance="@style/TextAppearance.AppCompat.Title"
+            android:textColor="#000000"
+            android:padding="8dp"
+            android:id="@+id/tv_title_confitmation_trip"
+            android:layout_below="@+id/iv_trip"
+            />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="When:"
+                android:padding="8dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="17sp"
+                android:id="@+id/when"
+                 android:layout_below="@id/tv_title_confitmation_trip"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/when"
+                android:id="@+id/ly_dates">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/s_date_confirmation_trip"
+                android:text="1-05-18"
+                 android:padding="8dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="to"
+                    android:padding="8dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/e_date_confirmation_trip"
+                    android:text="3-05-18"
+                    android:padding="8dp" />
+            </LinearLayout>
+            <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Required Gear"
+            android:padding="8dp"
+                android:textColor="@color/colorPrimaryDark"
+            android:layout_below="@id/ly_dates"
+                android:id="@+id/required_gear"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Harness"
+                android:textSize="10sp"
+                android:padding="8dp"
+                android:id="@+id/tv_required_gear"
+                android:layout_below="@id/required_gear"/>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="56dp"
+                android:id="@+id/button_coffirm_assistance"
+                android:layout_below="@id/tv_required_gear"
+                android:layout_centerHorizontal="true"
+                android:background="@color/colorPrimary"
+                android:text="Confirm"
+                android:textColor="@color/white"
+                android:layout_alignParentBottom="true"/>
+
+       </RelativeLayout>
+    </android.support.v7.widget.CardView>
+
+
+</RelativeLayout>

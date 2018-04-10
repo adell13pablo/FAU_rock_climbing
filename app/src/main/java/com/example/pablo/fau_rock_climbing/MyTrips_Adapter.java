@@ -25,7 +25,7 @@ public class MyTrips_Adapter extends RecyclerView.Adapter<MyTrips_Adapter.ViewHo
     }
 
     public interface ListItemClickListener{
-        void onLitemItemClick(int position);
+        void onLitemItemClick(View view, int position);
     }
 
     public MyTrips_Adapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType){
@@ -35,11 +35,12 @@ public class MyTrips_Adapter extends RecyclerView.Adapter<MyTrips_Adapter.ViewHo
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(ViewHolder holder, final int position) {
         Trip mytrip = mytrips.get(position);
         holder.name.setText(mytrip.getName());
         holder.s_date.setText(mytrip.getS_date());
         holder.e_date.setText(mytrip.getE_date());
+
 
     }
 
@@ -70,8 +71,7 @@ public class MyTrips_Adapter extends RecyclerView.Adapter<MyTrips_Adapter.ViewHo
         @Override
 
         public void onClick(View view) {
-            int position = getAdapterPosition();
-            listener.onLitemItemClick(position);
+
         }
     }
 }

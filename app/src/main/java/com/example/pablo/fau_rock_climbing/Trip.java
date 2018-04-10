@@ -6,6 +6,7 @@ package com.example.pablo.fau_rock_climbing;
 
 public class Trip {
     private String name, e_date, s_date;
+    private String [] gear;
     private int id;
 
 
@@ -14,6 +15,16 @@ public class Trip {
         this.id= id;
         this.s_date = s_date;
         this.e_date = e_date;
+    }
+
+    public Trip(String name, String s_date, String e_date, int id, String gear){
+        this.name = name;
+        this.id= id;
+        this.s_date = s_date;
+        this.e_date = e_date;
+       this.gear = gear.split(" ");
+
+
     }
 
     public void setName(String name){
@@ -46,5 +57,14 @@ public class Trip {
 
     public void setE_date(String date){
         e_date = date;
+    }
+
+    public String[] getGear() {
+
+        return gear;
+    }
+
+    public void setGear(String[] gear) {
+        this.gear = gear;
     }
 }

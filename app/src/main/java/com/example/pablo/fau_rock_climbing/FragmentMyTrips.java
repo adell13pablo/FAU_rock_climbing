@@ -27,11 +27,11 @@ import java.util.List;
  */
 
 public class FragmentMyTrips extends Fragment implements MyTrips_Adapter.ListItemClickListener{
-    protected ArrayList<Trip> mytrips ;
-    protected RecyclerView list;
-    protected ProgressBar bar;
-    protected MyTrips_Adapter.ListItemClickListener listener;
-    protected MyTrips_Adapter adapter;
+     ArrayList<Trip> mytrips ;
+     RecyclerView list;
+     ProgressBar bar;
+
+     MyTrips_Adapter adapter;
 
     public FragmentMyTrips(){
 
@@ -54,7 +54,7 @@ public class FragmentMyTrips extends Fragment implements MyTrips_Adapter.ListIte
         list = view.findViewById(R.id.mytrips_RV);
         bar = view.findViewById(R.id.progress_bar_mytrips);
 
-        adapter= new MyTrips_Adapter(mytrips, listener);
+        adapter= new MyTrips_Adapter(mytrips, this);
         RecyclerView.LayoutManager manager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
         list.setAdapter(adapter);
         list.setLayoutManager(manager);
@@ -65,14 +65,7 @@ public class FragmentMyTrips extends Fragment implements MyTrips_Adapter.ListIte
         return view;
     }
 
-    @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
 
-
-
-
-    }
 
 
     public void getMyTrips(final String username){
@@ -147,8 +140,10 @@ public class FragmentMyTrips extends Fragment implements MyTrips_Adapter.ListIte
     }
 
 
+
+
     @Override
-    public void onLitemItemClick(int position) {
-        Toast.makeText(getContext(), "Click on item" + position, Toast.LENGTH_LONG).show();
+    public void onLitemItemClick(View view, int position) {
+        Log.d("CLICKA", "onLitemItemClick: CLICCCC");
     }
 }

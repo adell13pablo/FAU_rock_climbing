@@ -26,19 +26,19 @@
         <activity android:name=".StudentMainActivity" />
         <activity android:name=".StudentLogIn" />
         <activity android:name=".RegisterStudent" />
-        <activity
-            android:name=".StudentProfile"
-            android:label="@string/title_activity_student_profile"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity android:name=".StudentProfile" />
         <activity android:name=".GuestLogIn" />
         <activity android:name=".GuestMainActivity" />
         <activity android:name=".GuestRegister" />
         <activity android:name=".GuestProfile" />
         <activity android:name=".CoursesMain" />
-        <activity android:name=".MembershipActivity"/>
+        <activity
+            android:name=".MembershipActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity android:name=".TripsMain" />
         <activity android:name=".PaymentActivity" />
-        <activity android:name=".CoursePayment"></activity>
+        <activity android:name=".CoursePayment" />
+        <activity android:name=".TripConfirmation"></activity>
     </application>
 
 </manifest>

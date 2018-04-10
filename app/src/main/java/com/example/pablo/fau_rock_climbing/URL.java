@@ -21,4 +21,5 @@ public class URL {
     public static final String getMyCourses = baseURL + "getMyCourses.php?";
     public static final String getMyCourses_Student = baseURL + "getMyCourses_Student.php?";
     public static final String paymentCourses = baseURL + "payment_Course.php?";
+    public static final String paymentTrip = baseURL + "payment_Trip.php?";
 }
