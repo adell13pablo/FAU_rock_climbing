@@ -83,6 +83,7 @@ Guest guest = SharedPreferencesManager.getInstance(getApplicationContext()).getG
                         startActivity(intent);
                     }else{
                         Toast.makeText(getApplicationContext(), "An error has ocurred, please check your data", Toast.LENGTH_LONG).show();
+                        Log.d("PAYMENT ERROR_JSON ", "onPostExecute: PAYMENT ERROR" + s);
                     }
                 }catch(JSONException e){
                     Log.d("PAYMENT ERROR ", "onPostExecute: PAYMENT ERROR" + s);

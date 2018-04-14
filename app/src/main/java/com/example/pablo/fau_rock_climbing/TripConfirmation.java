@@ -67,14 +67,16 @@ public class TripConfirmation extends AppCompatActivity {
                 if(SharedPreferencesManager.getInstance(getApplicationContext()).appMode().equals("guest")){
 
                     params.put("username", String.valueOf(SharedPreferencesManager.getInstance(getApplicationContext()).getGuest().getUsername()));
+                    params.put("mode", "guest");
                 }
                 else if(SharedPreferencesManager.getInstance(getApplicationContext()).appMode().equals("student")){
                     params.put("username", String.valueOf(SharedPreferencesManager.getInstance(getApplicationContext()).getStudent().getZ_number()));
+                    params.put("mode", "student");
                 }
 
 
                 params.put("trip", id_trip);
-                params.put("mode", SharedPreferencesManager.getInstance(getApplicationContext()).appMode());
+
 
                 Log.d("SET", "doInBackground: Trip SET");
 
@@ -97,7 +99,8 @@ public class TripConfirmation extends AppCompatActivity {
                         else if(SharedPreferencesManager.getInstance(getApplicationContext()).appMode().equals("student")){
                             i = new Intent(getApplicationContext(), StudentMainActivity.class);
                         }
-
+                        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(i);
 
                     }else{
@@ -108,5 +111,7 @@ public class TripConfirmation extends AppCompatActivity {
                 }
             }
         }
+        confirmTrip t = new confirmTrip();
+        t.execute();
     }
 }

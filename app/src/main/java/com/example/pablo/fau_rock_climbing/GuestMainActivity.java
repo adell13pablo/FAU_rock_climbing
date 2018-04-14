@@ -39,7 +39,7 @@ public class GuestMainActivity extends AppCompatActivity {
     public void onCreate(Bundle savedInstance){
         super.onCreate(savedInstance);
         setContentView(R.layout.guestmainactivity);
-       // SharedPreferencesManager.getInstance(getApplicationContext()).updateGuest();
+        SharedPreferencesManager.getInstance(getApplicationContext()).updateGuest();
 
         android.support.v7.widget.Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);

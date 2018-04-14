@@ -181,7 +181,7 @@ public class SharedPreferencesManager {
                         //Create student object to store information about user
                         Guest guest_2 = new Guest(obj.getString("name"), obj.getString("l_name"), obj.getString("g_id"), obj.getString("membership"),
                                 obj.getString("level"), obj.getInt("age"), obj.getString("e_date"), obj.getString("password"));
-                        if(guest.getMembership() != guest_2.getMembership()) guest.setMembership(guest_2.getMembership());
+                        if(guest.getMembership() != guest_2.getMembership() || guest.getMembership() == null) guest.setMembership(guest_2.getMembership());
                         if(guest.getLevel() != guest_2.getLevel()) guest.setLevel(guest_2.getLevel());
                         if(guest.getE_date() != guest_2.getE_date()) guest.setE_date(guest_2.getE_date());
                         SharedPreferencesManager.getInstance(context).guestLogin(guest);
